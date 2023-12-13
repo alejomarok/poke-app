@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import App from './App';
 
-function App() {
-  const [count, setCount] = useState(0)
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_POKEAPI_GRAPHQL_URL,
+  cache: new InMemoryCache(),
+});
 
-  return (
-      <div>
-
-      </div>
-     
-  )
-}
-
-export default App
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+);
