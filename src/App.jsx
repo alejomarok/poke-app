@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import App from './App';
+import './App.css'; // Importa el archivo de estilos
+import logoPokemon from './images/logo-pokemon.png';
+import PokemonList from './components/PokemonList'; 
 
-const client = new ApolloClient({
-  uri: process.env.REACT_APP_POKEAPI_GRAPHQL_URL,
-  cache: new InMemoryCache(),
-});
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById('root')
-);
+const App = () => {
+  return (
+    <div className="app-container">
+      <img src={logoPokemon} alt="Logo Pokemon" className="centered-image" />
+      <PokemonList />
+    </div>
+  );
+};
+
+export default App;
